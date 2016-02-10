@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+	
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+
+	<style type="text/css">
+		.rightColumn { width: 38%; }
+		.leftColumn { width: 62%; }
+	</style>
+
+	<title>nanoUrl</title>
+</head>
+<body ng-controller="AppCtrl">
+	<div class="container">
+		<h1>nanoUrl: URL Shortener</h1>
+		<br/>
+
+		<form name="myForm">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td class="leftColumn"><input type="url" class="form-control" placeholder="Enter your URL here" ng-model="longURL.name" required></td>
+						<td class="rightColumn"><button ng-disabled="myForm.$invalid" class="btn btn-primary" ng-click="shortenURL()">Shorten URL</button></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr ng-show="IsResultVisible">
+						<td>Long URL</td>
+						<td>Shortened URL</td>
+					</tr>
+					<tr ng-repeat="(index, data) in shortenedURLs" ng-show="IsResultVisible">
+						<td><a href="{{data.longURL}}" target="_blank"><span alt="{{data.longURL}}" title="{{data.longURL}}">{{data.tLongURL}}</span></a></td>
+						<td><a href="{{data.shortURL}}" target="_blank"><span alt="{{data.shortURL}}" title="{{data.shortURL}}">{{data.shortURL}}</span></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="controllers/controller.js"></script>
+</body>
+</html>
